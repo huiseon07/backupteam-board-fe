@@ -1,0 +1,23 @@
+{
+  "name": "backupteam-board-fe",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/popoo9910/backupteam-board-fe.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/popoo9910/backupteam-board-fe/issues"
+  },
+  "homepage": "https://github.com/popoo9910/backupteam-board-fe#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
