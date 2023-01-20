@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <ul>
+      <li>제목 :<span id="movie_title"></span></li>
+      <li>ID :<span id="id"></span></li>
+      <li>등록자 :<span id="name"></span></li>
+      <li>작성일 :<span id="created_at"></span></li>
+    </ul>
+  </body>
+</html>
+
+<script>
+  fetch("http://localhost:9000/movies/3")
+    .then((response) => response.json())
+    .then((data) => console.log("영화 하나 가져오기", data));
+</script>
+
+안녕 안녕
