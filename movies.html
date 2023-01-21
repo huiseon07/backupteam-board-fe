@@ -85,20 +85,20 @@
     });
   </script> -->
   <script>
-    fetch("http://localhost:9000/movies/3")
+    fetch("http://localhost:9000/movies")
       .then((response) => response.json())
       .then((movies) => {
         const html = movies.map((movie) => {
           return `
           <tr>
             <td>${movie.id}</td>
-            <td>${movie.movie_title}</td>
+            <td> <a href='movie.html?id=${movie.id}'>${movie.movie_title}</td>
             <td>${movie.name}</td>
             <td>${movie.hit_count}</td>
             <td>${movie.created_at}</td>
           </tr>`;
         });
-        document.getElementById("movies").innerHTML = html.json();
+        document.getElementById("movies").innerHTML = html.join("");
       });
   </script>
 </html>

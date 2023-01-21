@@ -10,8 +10,29 @@
   <body>
     <h1>영화 제목 등록하기</h1>
     <a href="index.html"> 홈으로 가기 </a> <br />
-    <a href="movie.html"> 영화 목록 보러 가기 </a> <br />
-    <form>영화 제목 : <input id="title" type="text" /><br /></form>
-    <input type="button" value="등록하기" />
+    <a href="movies.html"> 영화 목록 보러 가기 </a> <br />
+    <form>영화 제목 : <input type="text" id="movie_title" /></form>
+    <br />
+    <button onclick="buttonClick()">등록하기</button>
   </body>
 </html>
+<script>
+  const buttonClick = () => {
+    fetch("http://localhost:9000/movies", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({
+        movie_title: document.getElementById("movie_title").value,
+        user_ids: 9,
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        location.href = "movies.html";
+      });
+  };
+</script>
+
+<!-- 조회수 undefined 발생) -->

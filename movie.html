@@ -7,19 +7,30 @@
     <title>Document</title>
   </head>
   <body>
+    <a href="register.html">영화 등록하러 가기</a> <br />
+    <a href="movies.html">영화 목록 보러가기</a>
     <ul>
-      <li>제목 :<span id="movie_title"></span></li>
-      <li>ID :<span id="id"></span></li>
-      <li>등록자 :<span id="name"></span></li>
-      <li>작성일 :<span id="created_at"></span></li>
+      <h1>제목 :<span id="movie_title"></span></h1>
+      <h3>
+        <li>ID :<span id="id"></span></li>
+        <li>등록자 :<span id="name"></span></li>
+        <li>작성일 :<span id="created_at"></span></li>
+      </h3>
     </ul>
   </body>
+  <script>
+    const urlSearch = new URLSearchParams(location.search);
+    const id = urlSearch.get("id");
+    console.log(id);
+    fetch(`http://localhost:9000/movies/${id}`)
+      .then((response) => response.json())
+      .then((movie) => {
+        document.getElementById(
+          "movie_title"
+        ).innerHTML = `${movie.movie_title}`;
+        document.getElementById("id").innerHTML = `${movie.id}`;
+        document.getElementById("name").innerHTML = `${movie.user_id}`;
+        document.getElementById("created_at").innerHTML = `${movie.created_at}`;
+      });
+  </script>
 </html>
-
-<script>
-  fetch("http://localhost:9000/movies/3")
-    .then((response) => response.json())
-    .then((data) => console.log("영화 하나 가져오기", data));
-</script>
-
-안녕 안녕
