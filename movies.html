@@ -5,9 +5,14 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <!-- <link rel="stylesheet" href="https://unpkg.com/mvp.css@1.12/mvp.css" /> -->
+    <link rel="stylesheet" href="https://unpkg.com/mvp.css@1.12/mvp.css" />
     <title>Document</title>
+    <style>
+      li {
+        display: inline-block;
+        margin-left: 20px;
+      }
+    </style>
   </head>
   <body>
     <h1>영화 목록 보기</h1>
@@ -22,73 +27,18 @@
           <th>등록일</th>
         </tr>
       </thead>
-      <!-- <tbody id="movies"></tbody> -->
-      <tbody id="movies">
-        <!-- <tr>
-          <th>1</th>
-          <th>Misérables, Les</th>
-          <th>Trix Hannaby</th>
-          <th>23</th>
-          <th>2022-08-11 00:40:32</th>
-        </tr>
-        <tr>
-          <th>3</th>
-          <th>Captain Ron</th>
-          <th>Trix Hannaby</th>
-          <th>1</th>
-          <th>2022-08-14 18:09:47</th>
-        </tr>
-        <tr>
-          <th>4</th>
-          <th>Siberia</th>
-          <th>Jimmy Weld</th>
-          <th>37</th>
-          <th>2022-02-08 02:44:29</th>
-        </tr>
-        <tr>
-          <th>5</th>
-          <th>Girl, The</th>
-          <th>Meredith Spendlove</th>
-          <th>82</th>
-          <th>2022-08-29 00:02:21</th>
-        </tr>
-        <tr>
-          <th>6</th>
-          <th>44 Minutes: The North Hollywood Shoot-Out</th>
-          <th>Kimmy Hulks</th>
-          <th>2</th>
-          <th>2022-12-06 20:33:12</th>
-        </tr> -->
-      </tbody>
+      <tbody id="movies"></tbody>
     </table>
+    <ul id="pagination"></ul>
   </body>
-  <!-- <script>
-    axios({
-      method: "get", // 통신 방식
-      url: "http://localhost:9000/movies", // 서버
-    }).then(function (response) {
-      const movies = response.data;
-      let temp = ``;
-
-      for (let i = 0; i < movies.length; i++) {
-        temp += `
-          <tr>
-            <td>${movies[i].id}</td>
-            <td>${movies[i].movie_title}</td>
-            <td>${movies[i].name}</td>
-            <td>${movies[i].hit_count}</td>
-            <td>${movies[i].created_at}</td>
-          </tr>
-        `;
-      }
-      document.getElementById("movies").innerHTML = temp;
-    });
-  </script> -->
   <script>
-    fetch("http://localhost:9000/movies")
+    const urlSearch = new URLSearchParams(location.search);
+    const page = urlSearch.get("page");
+    fetch(`http://localhost:9000/movies?page=${page}`)
       .then((response) => response.json())
       .then((movies) => {
-        const html = movies.map((movie) => {
+        const html = movies.movies.map((movie) => {
+          console.log(movies);
           return `
           <tr>
             <td>${movie.id}</td>
@@ -99,6 +49,13 @@
           </tr>`;
         });
         document.getElementById("movies").innerHTML = html.join("");
+
+        const lastPage = movies.pageInfo.lastPage;
+        const pages = [];
+        for (let i = 1; i <= lastPage; i++) {
+          pages.push(`<li><a href='?page=${i}'>${i}</a></li>`);
+        }
+        document.getElementById("pagination").innerHTML = pages.join("");
       });
   </script>
 </html>

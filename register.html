@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- <link rel="stylesheet" href="https://unpkg.com/mvp.css@1.12/mvp.css" /> -->
+    <link rel="stylesheet" href="https://unpkg.com/mvp.css@1.12/mvp.css" />
     <title>Document</title>
   </head>
   <body>
@@ -25,7 +25,7 @@
       },
       body: JSON.stringify({
         movie_title: document.getElementById("movie_title").value,
-        user_ids: 9,
+        user_id: 9,
       }),
     })
       .then((response) => response.json())
@@ -35,4 +35,6 @@
   };
 </script>
 
-<!-- 조회수 undefined 발생) -->
+<!-- 조회수 undefined, null 발생) --
+  등록하기 버튼을 클릭 시, 목록 페이지로 들어가지지만
+  hit_count에 대한 값만 불러와지지 않고 있음>

@@ -20,5 +20,29 @@
   })
     .then((response) => response.json())
     .then((data) => console.log("register 결과 :", data));
-    
 </script>
+
+<!-- <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script> -->
+<!-- <tbody id="movies"></tbody> -->
+<!-- <script>
+    axios({
+      method: "get", // 통신 방식
+      url: "http://localhost:9000/movies", // 서버
+    }).then(function (response) {
+      const movies = response.data;
+      let temp = ``;
+
+      for (let i = 0; i < movies.length; i++) {
+        temp += `
+          <tr>
+            <td>${movies[i].id}</td>
+            <td>${movies[i].movie_title}</td>
+            <td>${movies[i].name}</td>
+            <td>${movies[i].hit_count}</td>
+            <td>${movies[i].created_at}</td>
+          </tr>
+        `;
+      }
+      document.getElementById("movies").innerHTML = temp;
+    });
+  </script> -->

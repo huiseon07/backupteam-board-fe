@@ -4,11 +4,11 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://unpkg.com/mvp.css@1.12/mvp.css" />
     <title>Document</title>
   </head>
   <body>
     <a href="register.html">영화 등록하러 가기</a> <br />
-    <a href="movies.html">영화 목록 보러가기</a>
     <ul>
       <h1>제목 :<span id="movie_title"></span></h1>
       <h3>
@@ -16,12 +16,12 @@
         <li>등록자 :<span id="name"></span></li>
         <li>작성일 :<span id="created_at"></span></li>
       </h3>
+      <a href="movies.html">영화 목록보기</a>
     </ul>
   </body>
   <script>
     const urlSearch = new URLSearchParams(location.search);
     const id = urlSearch.get("id");
-    console.log(id);
     fetch(`http://localhost:9000/movies/${id}`)
       .then((response) => response.json())
       .then((movie) => {
