@@ -8,7 +8,7 @@
     <title>Document</title>
   </head>
   <body>
-    <a href="register.html">영화 등록하러 가기</a> <br />
+    <!-- <div style="text-align: center"> -->
     <ul>
       <h1>제목 :<span id="movie_title"></span></h1>
       <h3>
@@ -16,8 +16,11 @@
         <li>등록자 :<span id="name"></span></li>
         <li>작성일 :<span id="created_at"></span></li>
       </h3>
+      <!-- <a onClick="history.go(-1)">영화 목록보기</a> -->
       <a href="movies.html">영화 목록보기</a>
     </ul>
+    <a href="register.html">영화 등록하러 가기</a> <br />
+    <!-- </div> -->
   </body>
   <script>
     const urlSearch = new URLSearchParams(location.search);
